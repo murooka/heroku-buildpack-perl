@@ -48,7 +48,7 @@ cd $BUILD_DIR
 # TODO pre-build extras for each perl to speed up
 if ! [ -e $LOCAL_DEPS/bin/carton ]; then
   echo "-----> Bootstrapping cpanm/Carton"
-  curl --silent -L http://cpanmin.us | perl - App::cpanminus Carton@0.9.59 2>&1 | indent
+  curl --silent -L http://cpanmin.us | perl - App::cpanminus Carton@1.0.12 2>&1 | indent
   fixin_shebang
 fi
 
