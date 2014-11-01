@@ -26,7 +26,9 @@ PERL_PACKAGE="cache.bulknews.net/heroku/perl-$PERL_VERSION.tgz"
 VENDORED_PERL="$BUILD_DIR/vendor/perl"
 
 echo "-----> Vendoring Perl"
-mkdir -p $VENDORED_PERL && curl $PERL_PACKAGE -s -o - | tar xzf - -C $VENDORED_PERL
+if ! [ -d $VENDORED_PERL ]; then
+  mkdir -p $VENDORED_PERL && curl $PERL_PACKAGE -s -o - | tar xzf - -C $VENDORED_PERL
+fi
 
 export PATH="$BUILD_DIR/local/bin:$VENDORED_PERL/bin:$PATH"
 
