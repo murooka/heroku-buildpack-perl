@@ -26,11 +26,13 @@ PERL_PACKAGE="cache.bulknews.net/heroku/perl-$PERL_VERSION.tgz"
 VENDORED_PERL="$BUILD_DIR/vendor/perl"
 
 echo "-----> Vendoring Perl"
-pwd
-ls
+echo "pwd: `pwd`"
+echo "ls: `ls`"
 if ! [ -d $VENDORED_PERL ]; then
   mkdir -p $VENDORED_PERL && curl $PERL_PACKAGE -s -o - | tar xzf - -C $VENDORED_PERL
 fi
+echo "pwd: `pwd`"
+echo "ls: `ls`"
 
 export PATH="$BUILD_DIR/local/bin:$VENDORED_PERL/bin:$PATH"
 
@@ -46,6 +48,8 @@ rm -rf $LOCAL_DEPS
 if [ -d $CACHE_DEPS ]; then
   cp -R "$CACHE_DEPS" "$LOCAL_DEPS"
 fi
+echo "pwd: `pwd`"
+echo "ls: `ls`"
 
 cd $BUILD_DIR
 
